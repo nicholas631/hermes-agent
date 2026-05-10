@@ -17,7 +17,7 @@ Primary Functions:
   - Fetches latest from origin
   - Reports ahead/behind divergence counts
   - Warns when threshold exceeded (>50 commits behind)
-Revision: 0.1.0
+Revision: 0.1.1
 #>
 
 Write-Host "Checking upstream drift..." -ForegroundColor Cyan
@@ -45,8 +45,8 @@ if ($currentBranch -ne "main") {
 $BEHIND = (git rev-list --count HEAD..origin/main 2>$null)
 $AHEAD = (git rev-list --count origin/main..HEAD 2>$null)
 
-if (-not $BEHIND) { $BEHIND = 0 }
-if (-not $AHEAD) { $AHEAD = 0 }
+if (-not $BEHIND) { $BEHIND = 0 } else { $BEHIND = [int]$BEHIND }
+if (-not $AHEAD) { $AHEAD = 0 } else { $AHEAD = [int]$AHEAD }
 
 Write-Host "Main branch status:" -ForegroundColor Cyan
 Write-Host "  Ahead:  $AHEAD commits" -ForegroundColor $(if ($AHEAD -eq 0) { "Green" } else { "Yellow" })

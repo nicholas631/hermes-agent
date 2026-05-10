@@ -4,11 +4,29 @@ description: Running log of AI-authored code and documentation changes.
 primary_functions:
   - Records prompt summaries and implementation outcomes.
   - Tracks touched files with revision numbers.
-revision: 0.2.0
-last_updated: 2026-05-09
+revision: 0.2.1
+last_updated: 2026-05-10
 ---
 
 # AI Change Log
+
+## 2026-05-10 - Bug Fixes: Personal Files Deletion and PowerShell Type Casting
+
+### Prompt Summary
+
+Fix two bugs: personal files that were documented as deleted but still present, and string comparison bug in PowerShell upstream check script.
+
+### Change Summary
+
+Fixed Bug 1 by deleting three personal files (`download_hermes36b.py`, `download_nemotron.py`, `doctor_output.txt`) that were documented as removed in the change log but were still present with hardcoded `K:\` drive paths. Fixed Bug 2 in `check_upstream.ps1` by adding explicit `[int]` type casting to `$BEHIND` and `$AHEAD` variables after git output capture. Without casting, PowerShell's `-gt`, `-le`, `-eq` operators performed lexicographic string comparison instead of numeric, causing wrong threshold triggers (e.g., behind=6 triggering >50 warning, behind=100 not triggering it, behind=2-9 skipping recent commits display).
+
+### Files Modified
+
+- `download_hermes36b.py` (deleted - personal utility with hardcoded `K:\models\hermes_4_3_36b`)
+- `download_nemotron.py` (deleted - personal utility with hardcoded `K:\models\nemotron_cascade`)
+- `doctor_output.txt` (deleted - empty diagnostic artifact)
+- `scripts/check_upstream.ps1` (revision 0.1.1 - added `[int]` casting for numeric comparisons)
+- `docs/ai-change-log.md` (revision 0.2.1)
 
 ## 2026-05-09 - Upstream Sync with Qwen 27B Preservation
 

@@ -6,7 +6,7 @@ Primary Functions:
   - Probe OpenAI-compatible /models and /chat/completions endpoints.
   - Validate configured model availability and completion behavior.
   - Emit human-readable and JSON reports with latency/token metrics.
-Revision: 0.1.0
+Revision: 0.1.1
 """
 
 from __future__ import annotations
@@ -202,7 +202,13 @@ def run_preflight(
         timeout_seconds,
     )
 
-    error = chat_error or models_error
+    error = None
+    if models_error and chat_error:
+        error = f"Multiple failures: {models_error}; {chat_error}"
+    elif chat_error:
+        error = chat_error
+    elif models_error:
+        error = models_error
     return PreflightReport(
         base_url=base_url,
         model=model_id,
@@ -280,10 +286,12 @@ def main(argv: Optional[list[str]] = None) -> int:
             json.dump(asdict(report), handle, indent=2)
         print(f"JSON report written to: {args.json_out}")
 
-    if not report.chat_endpoint_ok:
+    if not report.models_endpoint_ok:
         return 1
-    if args.require_model_listed and not report.model_listed:
+    if not report.chat_endpoint_ok:
         return 2
+    if args.require_model_listed and not report.model_listed:
+        return 3
     return 0
 
 
