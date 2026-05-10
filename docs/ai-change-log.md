@@ -4,11 +4,29 @@ description: Running log of AI-authored code and documentation changes.
 primary_functions:
   - Records prompt summaries and implementation outcomes.
   - Tracks touched files with revision numbers.
-revision: 0.1.5
+revision: 0.2.0
 last_updated: 2026-05-09
 ---
 
 # AI Change Log
+
+## 2026-05-09 - Upstream Sync with Qwen 27B Preservation
+
+### Prompt Summary
+
+Merge 4,918 upstream commits from NousResearch/hermes-agent main branch while preserving custom Qwen 27B testing infrastructure and documentation.
+
+### Change Summary
+
+Completed safe upstream synchronization using worktree-based merge strategy. Cherry-picked custom commits (exa-py dependencies, Qwen test wrapper, documentation) into integration branch based on latest upstream. Resolved merge conflicts in documentation files. Validated with targeted test lanes: model metadata (133 passed), Qwen integration (2 skipped - no endpoint), custom scripts functional. Known Windows-specific test blockers documented (fcntl import, which rg command, ACP module). Updated to latest gateway, OpenRouter, Telegram, memory providers, and security improvements from upstream.
+
+### Files Modified
+
+- All core Hermes-Agent files (4,918 commit upstream delta)
+- `docs/ai-change-log.md` (revision 0.2.0)
+- `docs/plans/2026-03-31-qwen27b-safe-upgrade-report.md` (revision 0.1.2 - merge conflict resolved)
+- Preserved custom files: `scripts/qwen27b_preflight.py`, `scripts/safe_upgrade_rehearsal.py`, `tests/integration/test_qwen27b_custom_endpoint.py`, `test_qwen.py`
+- Created backup tag: `pre-upstream-sync-20260509-212007`
 
 ## 2026-05-09 - Qwen Preflight Error Reporting and Exit Code Fixes
 
