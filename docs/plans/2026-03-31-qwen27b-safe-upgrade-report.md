@@ -5,11 +5,17 @@ primary_functions:
   - Records baseline git state and rollback checkpoint.
   - Defines prioritized testing/setup actions for Qwen 27B.
   - Documents a non-destructive Windows-safe upgrade rehearsal workflow.
-revision: 0.1.1
+revision: 0.1.2
 last_updated: 2026-03-31
 ---
 
 # Qwen 27B Testing and Safe Upgrade Report
+
+## Plan Status
+
+- Status: Completed
+- Completion date: 2026-03-31
+- Follow-on plan: `docs/plans/2026-03-31-qwen27b-phase2-upgrade-plan.md`
 
 ## Prompt Summary
 
