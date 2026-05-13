@@ -2,10 +2,6 @@
   <img src="assets/banner.png" alt="Hermes Agent" width="100%">
 </p>
 
-> **⚠️ MIGRATION NOTICE**: This fork has been migrated to a pip-based workflow.  
-> The new project is at `D:\Python_Projects\Hermes_Custom_Extensions\`.  
-> This repository is kept for reference only. For updates, use `pip install --upgrade` in the new project.
-
 # Hermes Agent ☤
 
 <p align="center">
