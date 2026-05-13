@@ -50,6 +50,56 @@ hermes              # start chatting!
 
 ---
 
+## Development Setup (Fork Workflow)
+
+**For contributors and team members working with custom extensions:**
+
+This repository uses a fork-based workflow to maintain custom features (like Qwen 27B testing tools) while staying synchronized with the upstream NousResearch repository.
+
+### Initial Setup
+
+1. **Fork this repository** (if you haven't already):
+   - Visit https://github.com/nicholas631/hermes-agent
+   - Click "Fork" and select your account
+   - Uncheck "Copy the main branch only" to get all branches
+
+2. **Clone your fork**:
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/hermes-agent.git
+   cd hermes-agent
+   ```
+
+3. **Add upstream remote**:
+   ```bash
+   git remote add upstream https://github.com/NousResearch/hermes-agent.git
+   git fetch upstream
+   ```
+
+4. **Verify remotes**:
+   ```bash
+   git remote -v
+   # origin    -> your fork (where you push)
+   # upstream  -> NousResearch/hermes-agent (where you pull updates)
+   ```
+
+### Staying Synchronized
+
+**Weekly sync with upstream**:
+```bash
+# Check drift from upstream
+powershell scripts/check_upstream.ps1
+
+# Fetch and merge upstream changes
+git fetch upstream
+git checkout main
+git merge upstream/main
+git push origin main
+```
+
+📖 **[Complete Fork Workflow Guide →](docs/developer-guide/git-workflow.md)**
+
+---
+
 ## Getting Started
 
 ```bash
