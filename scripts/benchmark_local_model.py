@@ -37,7 +37,7 @@ class BenchmarkConfig:
     api_key: str
     timeout: float
     quick_mode: bool
-    context_sizes: list[int] = field(default_factory=lambda: [100, 1000, 5000, 10000, 50000])
+    context_sizes: list[int] = field(default_factory=lambda: [1000, 5000, 10000])
     num_iterations: int = 3
 
 
@@ -483,7 +483,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     
     parser.add_argument(
         "--base-url",
-        default=os.getenv("QWEN27B_BASE_URL", "http://localhost:8085/v1"),
+        default=os.getenv("QWEN27B_BASE_URL", "http://localhost:8000/v1"),
         help="OpenAI-compatible endpoint base URL",
     )
     parser.add_argument(

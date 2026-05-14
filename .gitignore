@@ -58,3 +58,8 @@ mini-swe-agent/
 # Nix
 .direnv/
 result
+
+# Development artifacts
+results/
+test_results/
+.cursor/

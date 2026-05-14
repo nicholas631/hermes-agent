@@ -2,6 +2,8 @@
 title: "Troubleshooting Local Models"
 description: "Solutions to common issues when running Hermes Agent with local LLM endpoints"
 sidebar_position: 6
+revision: 1.0.1
+last_updated: 2026-05-13
 ---
 
 # Troubleshooting Local Models
@@ -57,7 +59,7 @@ Get-NetTCPConnection -LocalPort 8085
 
 1. **Start the LLM service:**
    ```powershell
-   cd d:\Python_Projects\LLM_Local_Model_Service
+   cd <path-to-your-llm-service>
    .\start-service.ps1
    ```
 

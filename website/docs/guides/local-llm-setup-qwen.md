@@ -2,6 +2,8 @@
 title: "Local LLM Setup - Qwen 3.6 27B"
 description: "Quick start guide for running Hermes Agent with local Qwen 3.6 27B models"
 sidebar_position: 5
+revision: 1.0.1
+last_updated: 2026-05-13
 ---
 
 # Local LLM Setup - Qwen 3.6 27B
@@ -520,7 +522,6 @@ pytest -m integration tests\integration\test_qwen27b_custom_endpoint.py -v
 - **Integration Tests**: [`tests/integration/test_qwen27b_custom_endpoint.py`](https://github.com/NousResearch/hermes-agent/blob/main/tests/integration/test_qwen27b_custom_endpoint.py)
 - **Testing Guide**: [Local Model Testing Guide](../../docs/testing/local-model-testing-guide.md)
 - **Troubleshooting**: [Troubleshooting Local Models](./troubleshooting-local-models.md)
-- **LLM Service Setup**: `d:\Python_Projects\LLM_Local_Model_Service\docs\QWEN36_TESTING_GUIDE.md`
 
 ---
 

@@ -1,8 +1,8 @@
 ---
 title: "Testing Scenarios"
 description: "Practical testing scenarios for validating Hermes Agent with local models"
-revision: 0.1.0
-last_updated: 2026-05-12
+revision: 0.1.1
+last_updated: 2026-05-13
 ---
 
 # Testing Scenarios
@@ -629,4 +629,3 @@ class TestCodeGenerationScenarios:
 - **Benchmark Script**: [`scripts/benchmark_local_model.py`](../../scripts/benchmark_local_model.py)
 - **Integration Tests**: [`tests/integration/test_qwen27b_custom_endpoint.py`](../../tests/integration/test_qwen27b_custom_endpoint.py)
 - **Testing Best Practices**: [`testing-best-practices.md`](testing-best-practices.md)
-- **LLM Service Testing Guide**: `d:\Python_Projects\LLM_Local_Model_Service\docs\QWEN36_TESTING_GUIDE.md`

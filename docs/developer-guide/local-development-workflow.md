@@ -1,8 +1,8 @@
 ---
 title: "Local Development Workflow"
 description: "Developer onboarding guide for testing and developing Hermes Agent with local models"
-revision: 0.1.0
-last_updated: 2026-05-12
+revision: 0.1.1
+last_updated: 2026-05-13
 ---
 
 # Local Development Workflow
@@ -294,7 +294,7 @@ def test_custom_provider_call(monkeypatch):
 
 ```powershell
 # 1. Start local LLM service (separate terminal)
-cd d:\Python_Projects\LLM_Local_Model_Service
+cd <path-to-your-llm-service>
 .\start-service.ps1
 
 # 2. Configure Hermes for local model

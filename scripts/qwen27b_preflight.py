@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
 Name: scripts/qwen27b_preflight.py
-Description: Repeatable preflight checks for Qwen 3.5 27B custom endpoints.
+Description: Repeatable preflight checks for local LLM custom endpoints.
 Primary Functions:
   - Probe OpenAI-compatible /models and /chat/completions endpoints.
   - Validate configured model availability and completion behavior.
   - Emit human-readable and JSON reports with latency/token metrics.
-Revision: 0.1.1
+Revision: 0.2.0
 """
 
 from __future__ import annotations
@@ -22,9 +22,9 @@ from typing import Any, Optional
 import requests
 
 
-DEFAULT_BASE_URL = os.getenv("QWEN27B_BASE_URL", "http://127.0.0.1:8085/v1").rstrip("/")
-DEFAULT_MODEL = os.getenv("QWEN27B_MODEL", "qwen3.5:27b")
-DEFAULT_API_KEY = os.getenv("QWEN27B_API_KEY", os.getenv("OPENAI_API_KEY", "ollama"))
+DEFAULT_BASE_URL = os.getenv("QWEN27B_BASE_URL", "http://localhost:8000/v1").rstrip("/")
+DEFAULT_MODEL = os.getenv("QWEN27B_MODEL", "qwen36_27b")
+DEFAULT_API_KEY = os.getenv("QWEN27B_API_KEY", os.getenv("OPENAI_API_KEY", "not-needed"))
 DEFAULT_PROMPT = os.getenv(
     "QWEN27B_PROMPT",
     "Explain in 40 words why deterministic test harnesses improve model rollout safety.",
