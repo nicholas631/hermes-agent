@@ -614,9 +614,9 @@ Switching from baseline to MTP models:
 ## Additional Resources
 
 ### Documentation
-- **LLM Service MTP Resolution**: `d:\Python_Projects\LLM_Local_Model_Service\results\MTP_FINAL_RESOLUTION_20260514.md`
-- **Performance Report**: `d:\Python_Projects\LLM_Local_Model_Service\results\MTP_DRAFT_COMPARISON_REPORT_20260514.md`
-- **Sprint Gap Analysis**: `d:\Python_Projects\LLM_Local_Model_Service\results\SPRINT_GAP_ANALYSIS_20260514.md`
+- **LLM Service MTP Resolution**: See your LLM service results directory for `MTP_FINAL_RESOLUTION_20260514.md`
+- **Performance Report**: See your LLM service results directory for `MTP_DRAFT_COMPARISON_REPORT_20260514.md`
+- **Sprint Gap Analysis**: See your LLM service results directory for `SPRINT_GAP_ANALYSIS_20260514.md`
 
 ### Scripts
 - **Multi-Model Preflight**: `scripts\multi_model_preflight.py`

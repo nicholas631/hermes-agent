@@ -4,6 +4,35 @@ This file maintains a record of all code changes made by AI assistance, includin
 
 ---
 
+## 2026-05-14 - Schwab-API Telegram Bot Integration
+
+**Prompt Summary:** Integrate Hermes Agent with Schwab-API Telegram bot via HTTP API to provide conversational AI assistance for trading analysis and general queries.
+
+**Change Summary:** 
+Integrated Hermes Agent with the Schwab-API Telegram bot to provide AI-powered conversational assistance. Configured the API server platform in `config.yaml` with appropriate toolsets (web, terminal, file, memory, session_search, skills) and port settings. Created health check script for monitoring API availability. Developed comprehensive integration test suite specific to Schwab-API usage patterns including session continuity, system prompts, and error handling. Created complete API reference documentation covering all endpoints, authentication, session management, error handling, and best practices for HTTP client integration.
+
+**Files Modified:**
+- `C:\Users\nickd\.hermes\config.yaml` (no version) - Added platforms.api_server configuration with enabled=true, host=127.0.0.1, port=8642; added platform_toolsets.api_server with web, terminal, file, memory, session_search, skills
+- `scripts/check_hermes_api.py` (v0.1.0) - New file - Health check script for Hermes API server status verification
+- `tests/integration/test_api_server_schwab.py` (v0.1.0) - New file - Integration tests for Schwab-API scenarios (session continuity, system prompts, usage stats, health endpoint, models endpoint, error handling)
+- `docs/API_REFERENCE.md` (no version) - New file - Complete API documentation covering endpoints, authentication, session management, error handling, configuration, toolsets, client examples, integration patterns, troubleshooting
+
+---
+
+## 2026-05-14 - Model Swap Script Fixes and Path Cleanup
+
+**Prompt Summary:** Fix -ShowInfo switch logic, broken "switch back" command hints, and more hardcoded developer paths in MTP documentation.
+
+**Change Summary:** 
+Fixed three bugs in model swap tooling. The `-ShowInfo` condition used `-or` instead of `-and`, making `$ModelInfo.ContainsKey($targetModel)` always evaluate true (since all valid models have info entries), causing model info to display on every run despite `-ShowInfo` defaulting to `$false`. The "switch back" hints used naive `.Replace('qwen36_', '')` which produced invalid aliases: `27b_mtp` (underscore) instead of `27b-mtp` (dash) for baseline→MTP, and `35b_a3b` instead of `35b` for 35B models. Fixed to use pattern matching to generate correct aliases (`27b`, `27b-mtp`, `35b`, `35b-mtp`). Also removed three more instances of hardcoded developer paths (`d:\Python_Projects\LLM_Local_Model_Service\results\...` and `D:\Python_Projects\Hermes_Agent`) that violated this commit's own stated goal of removing "personal Windows paths" from the repository.
+
+**Files Modified:**
+- `scripts/swap_model.ps1` (v1.0.0 → v1.0.1) - Changed `-or` to `-and` in ShowInfo condition (line 248), replaced naive string manipulation with pattern-matching logic to generate correct aliases (lines 270-282)
+- `scripts/MODEL_SWAP_README.md` (v1.0.0 → v1.0.1) - Replaced `D:\Python_Projects\Hermes_Agent` with `<path-to-hermes-agent>` placeholder
+- `docs/guides/mtp-models-guide.md` (no version) - Replaced three `d:\Python_Projects\LLM_Local_Model_Service\results\...` absolute paths with descriptive text referencing "your LLM service results directory"
+
+---
+
 ## 2026-05-14 - Profile Support Fix and Changelog Cleanup
 
 **Prompt Summary:** Fix profile-breaking hardcoded paths in Telegram test scripts and remove accidentally committed AI session log masquerading as changelog.

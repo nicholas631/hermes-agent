@@ -28,7 +28,9 @@ TIMEOUT = float(os.getenv("LLM_SERVICE_TIMEOUT", "60"))
 # Models to test
 TEST_MODELS = [
     "qwen36_27b",
+    "qwen36_27b_mtp",           # NEW: MTP variant (draft_n=2)
     "qwen36_35b_a3b",
+    "qwen36_35b_a3b_mtp",       # NEW: MTP variant (draft_n=2)
     "gemma4_31b_iq4_nl",
 ]
 
