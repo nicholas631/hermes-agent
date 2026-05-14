@@ -26,7 +26,9 @@ DEFAULT_BASE_URL = os.getenv("LLM_SERVICE_BASE_URL", "http://127.0.0.1:8085/v1")
 DEFAULT_API_KEY = os.getenv("LLM_SERVICE_API_KEY", "not-needed")
 DEFAULT_MODELS = [
     "qwen36_27b",
+    "qwen36_27b_mtp",           # NEW: MTP variant (draft_n=2)
     "qwen36_35b_a3b",
+    "qwen36_35b_a3b_mtp",       # NEW: MTP variant (draft_n=2)
     "gemma4_31b_iq4_nl"
 ]
 DEFAULT_PROMPT = os.getenv(

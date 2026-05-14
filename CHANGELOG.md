@@ -4,6 +4,20 @@ This file maintains a record of all code changes made by AI assistance, includin
 
 ---
 
+## 2026-05-14 - Profile Support Fix and Changelog Cleanup
+
+**Prompt Summary:** Fix profile-breaking hardcoded paths in Telegram test scripts and remove accidentally committed AI session log masquerading as changelog.
+
+**Change Summary:** 
+Fixed critical profile-awareness bugs in Telegram testing scripts that violated the project rule "Use `get_hermes_home()` for all HERMES_HOME paths". Both scripts hardcoded `Path.home() / ".hermes"` to locate the `.env` file, which would read from the wrong directory under non-default profiles. Changed to use `get_hermes_home()` from `hermes_constants`, making scripts profile-aware. Also replaced the existing `CHANGELOG.md` which was an accidentally committed AI agent session log (not a conventional changelog) containing a personal Windows path `C:\Users\nickd\.hermes\.env` exposing the developer's username, plus specific Telegram Message IDs and AI workflow metadata. Replaced with proper cumulative changelog following project conventions.
+
+**Files Modified:**
+- `scripts/send_telegram_hello.py` (v0.1.0 → v0.1.1) - Replaced `Path.home() / ".hermes"` with `get_hermes_home()`, added import from `hermes_constants`, updated error messages to say "HERMES_HOME/.env" instead of "~/.hermes/.env"
+- `scripts/test_telegram_gateway.py` (v0.1.0 → v0.1.1) - Replaced `Path.home() / ".hermes"` with `get_hermes_home()`, added import from `hermes_constants`
+- `CHANGELOG.md` (complete replacement) - Removed AI session log with personal paths (`C:\Users\nickd\.hermes\.env`, Message ID 36264, etc.), replaced with proper cumulative changelog
+
+---
+
 ## 2026-05-14 - Memory Monitor Deadlock Fix and Artifact Cleanup
 
 **Prompt Summary:** Fix pipe buffer deadlock in memory monitor and remove committed development artifact containing hardcoded paths.

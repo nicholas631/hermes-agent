@@ -150,24 +150,53 @@ Use this checklist to verify everything is working:
 
 Your local service may provide multiple Qwen 3.6 27B variants:
 
-### qwen36_27b (Recommended)
+### qwen36_27b (Recommended for Maximum Context)
 
 - **Description**: Standard Q4_K_M quantization
 - **VRAM**: ~13.2 GB
-- **Speed**: ~6 tokens/sec
+- **Speed**: ~23 tokens/sec
 - **Context**: 262,144 tokens
-- **Best for**: General use, balanced performance
+- **Best for**: General use, maximum context window
 
 **Configure:**
 ```powershell
 hermes config set model.model qwen36_27b
 ```
 
+### qwen36_27b_mtp ⚡ NEW: Fastest Inference
+
+- **Description**: Multi-Token Prediction variant (draft_n=2)
+- **VRAM**: ~13.2 GB (same as baseline)
+- **Speed**: ~28 tokens/sec (**21% faster!**)
+- **Context**: 65,536 tokens (reduced for MTP overhead)
+- **Best for**: Speed-critical applications, typical Hermes tasks
+- **Quality**: Identical to baseline (zero quality loss)
+
+**Configure:**
+```powershell
+hermes config set model.model qwen36_27b_mtp
+```
+
+> **What is MTP?** Multi-Token Prediction uses speculative decoding to predict multiple tokens ahead. Accepted predictions are "free" (no generation needed), resulting in 20-130% speedup with identical quality. See the [MTP Models Guide](./mtp-models-guide.md) for details.
+
+### qwen36_27b_mtp_draft1 ⚡ NEW: Balanced MTP
+
+- **Description**: MTP with draft_n=1 (conservative)
+- **VRAM**: ~13.2 GB
+- **Speed**: ~26 tokens/sec (~15% faster)
+- **Context**: 65,536 tokens
+- **Best for**: Predictable performance, production use
+
+**Configure:**
+```powershell
+hermes config set model.model qwen36_27b_mtp_draft1
+```
+
 ### qwen36_27b_otq
 
 - **Description**: Optimized quantization variant
 - **VRAM**: ~12.8 GB
-- **Speed**: ~6.5 tokens/sec
+- **Speed**: ~24 tokens/sec
 - **Context**: 262,144 tokens
 - **Best for**: Slightly faster inference with minimal quality tradeoff
 
@@ -180,14 +209,30 @@ hermes config set model.model qwen36_27b_otq
 
 - **Description**: DeepSpeed FlashAttention variant
 - **VRAM**: ~13.5 GB
-- **Speed**: ~7 tokens/sec
+- **Speed**: ~25 tokens/sec
 - **Context**: 262,144 tokens
-- **Best for**: Maximum speed with compatible hardware
+- **Best for**: Faster inference with FlashAttention
 
 **Configure:**
 ```powershell
 hermes config set model.model qwen36_27b_dflash
 ```
+
+### qwen36_35b_a3b_mtp 🚀 NEW: Maximum Speed
+
+- **Description**: 35B MoE model with MTP (draft_n=2)
+- **VRAM**: ~20 GB
+- **Speed**: ~64 tokens/sec (**130% faster than baseline!**)
+- **Context**: 32,768 tokens
+- **Best for**: Maximum performance, fastest possible inference
+- **Quality**: Identical to baseline
+
+**Configure:**
+```powershell
+hermes config set model.model qwen36_35b_a3b_mtp
+```
+
+> **MTP Performance**: The 35B-A3B MTP variant achieves **2.31x speedup** over its baseline, making it the fastest model available. See [MTP Models Guide](./mtp-models-guide.md) for comprehensive comparison and usage recommendations.
 
 ---
 
@@ -517,6 +562,7 @@ pytest -m integration tests\integration\test_qwen27b_custom_endpoint.py -v
 
 ## Additional Resources
 
+- **MTP Models Guide**: [MTP Models Guide](./mtp-models-guide.md) - **NEW!** Comprehensive guide to faster MTP models
 - **Preflight Script**: [`scripts/qwen27b_preflight.py`](https://github.com/NousResearch/hermes-agent/blob/main/scripts/qwen27b_preflight.py)
 - **Benchmark Script**: [`scripts/benchmark_local_model.py`](https://github.com/NousResearch/hermes-agent/blob/main/scripts/benchmark_local_model.py)
 - **Integration Tests**: [`tests/integration/test_qwen27b_custom_endpoint.py`](https://github.com/NousResearch/hermes-agent/blob/main/tests/integration/test_qwen27b_custom_endpoint.py)
